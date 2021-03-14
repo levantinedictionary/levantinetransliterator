@@ -1,4 +1,4 @@
-# levantinetransliterator
+# levantine transliterator
 
 Transliterator from arabizi to arabic script (siyyara => سيارة)
 
@@ -39,4 +39,4 @@ ld.transliterate("bantalon");
 //بَنتَلُن بَنتَلون بَنتالُن بَنتالون بَنطَلُن بَنطَلون بَنطالُن بَنطالون بانتَلُن بانتَلون بانتالُن بانتالون بانطَلُن بانطَلون بانطالُن بانطالون
 ```
 
-### Contributions welcomed!
+### Contributions are welcome!
