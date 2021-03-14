@@ -1,6 +1,6 @@
-# levantine transliterator
+# levantinetransliterator
 
-Transliterator from arabizi to arabic script for Lebanese, Syrian, Jordanian and Palestinian (siyyara => سيارة)
+Transliterator from arabizi to arabic script (siyyara => سيارة)
 
 ## Install
 
@@ -10,7 +10,8 @@ npm -i levantinetransliterator
 
 ## Demo
 
-[As used on LevantineDictionary.com](https://levantinedictionary.com)
+[As used on LevantineDictionary.com](https://www.levantinedictionary.com)
+![levantine dictionary logo](https://www.levantinedictionary.com/favicon-32x32.png "levantine dictionary logo")
 
 ## Usage
 
@@ -39,4 +40,4 @@ ld.transliterate("bantalon");
 //بَنتَلُن بَنتَلون بَنتالُن بَنتالون بَنطَلُن بَنطَلون بَنطالُن بَنطالون بانتَلُن بانتَلون بانتالُن بانتالون بانطَلُن بانطَلون بانطالُن بانطالون
 ```
 
-### Contributions are welcome!
+### Contributions welcomed!
