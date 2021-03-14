@@ -10,5 +10,3 @@ if (!mar7abaSuggestions.includes(mar7abaExpected))
   throw `Test failed, couldn't find ${mar7abaExpected} in suggestions`;
 
 console.log("all tests succeeded");
-
-console.log(ld.transliterate("maba3rif").join(" "));

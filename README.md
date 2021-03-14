@@ -10,7 +10,7 @@ npm -i levantinetransliterator
 
 ## Demo
 
-[As used on LevantineDictionary.com](https://www.levantinedictionary.com)
+[As used on LevantineDictionary.com](https://www.levantinedictionary.com/tools/transliterator)
 ![levantine dictionary logo](https://www.levantinedictionary.com/favicon-32x32.png "levantine dictionary logo")
 
 ## Usage
