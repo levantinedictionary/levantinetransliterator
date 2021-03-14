@@ -1,0 +1,19 @@
+{
+  "name": "levantinetransliterator",
+  "version": "1.0.0",
+  "description": "Transliterator for Lebanese, Syrian, Jordanian and Palestinian",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "Arabic",
+    "Transliterator",
+    "Lebanese",
+    "Syrian",
+    "Jordanian",
+    "Palestinian"
+  ],
+  "author": "levantinedictionary.com",
+  "license": "ISC"
+}
