@@ -1,6 +1,6 @@
 # levantine transliterator
 
-Transliterator from arabizi to arabic script (siyyara => سيارة)
+Transliterator from arabizi to arabic script for Lebanese, Syrian, Jordanian and Palestinian (siyyara => سيارة)
 
 ## Install
 
