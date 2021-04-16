@@ -1,6 +1,6 @@
 {
   "name": "levantinetransliterator",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Transliterator for Lebanese, Syrian, Jordanian and Palestinian",
   "main": "index.js",
   "scripts": {

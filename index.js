@@ -422,3 +422,7 @@ exports.pronunciate = function (word, limit = 100) {
 exports.toArb = function (word, limit = 2) {
   return toTree(word, PRON_TO_ARB_RULES, limit);
 };
+
+exports.custom = function (word, rules, limit = 100) {
+  return toTree(word, rules, limit);
+};
