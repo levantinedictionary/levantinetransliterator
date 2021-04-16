@@ -2,8 +2,8 @@
 
 Transliterator from:
 
-- arabizi to arabic script (siyyara => سيارة)
 - arabizi or arabic to pronunciation (le3be => ləʕbə)
+- arabizi to arabic script (siyyara => سيارة)
 - pronunciation to approximate arabic transcription( ləʕbə => لِعبِ)
 
 ## Install
