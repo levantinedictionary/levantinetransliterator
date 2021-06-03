@@ -368,9 +368,9 @@ const PRON_TO_ARB_RULES = [
 
   { rule: "S", l: "e", a: [`${ALEF}${KASRA}`] },
   { rule: "M", l: "e", a: [KASRA] },
-  // { rule: "E", l: "e", a: [KASRA] },
+  { rule: "E", l: "e", a: [KASRA] },
 
-  // { rule: "A", l: "i", a: [KASRA] },
+  { rule: "A", l: "i", a: [KASRA] },
 
   { rule: "S", l: "ə", a: [`${ALEF}${KASRA}`] },
   { rule: "M", l: "ə", a: [KASRA] },
