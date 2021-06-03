@@ -25,91 +25,177 @@ class TreeNode {
   }
 }
 
+const ALEF = "ا";
+const BAA2 = "ب";
+const PAA2 = "پ";
+const TAA2 = "ت";
+const TA2_MARBOUTA = "ة";
+const THAA = "ط";
+const ALEF_HAMZE = "أ";
+const QAF = "ق";
+const HAMZE_SEAT = "إ";
+const KAAF = "ك";
+const SHADDE = "\u0651";
+const H7A2 = "ح";
+const GHAYN = "غ";
+const AAYN = "ع";
+const YAA2 = "ي";
+const FAT7A = "\u064E";
+const KHA2 = "خ";
+const SEEN = "س";
+const SHEEN = "ش";
+const DAAL = "د";
+const DHAAD = "ض";
+const SAAD = "ص";
+const THA = "ط";
+const NOON = "ن";
+const FAA2 = "ف";
+const JIIM = "ج";
+const HAA2 = "ه";
+const LAAM = "ل";
+const MIIM = "م";
+const WAAW = "و";
+const DAMME = "\u064F";
+const RAA2 = "ر";
+
+const ZHAA2 = "ظ";
+const ZHAAL = "ذ";
+
+const ZAY = "ز";
+const ALEF_MAKSOURA = "ى";
+
+const HAMZE_SATER = "ء";
+const KASRA = "\u0650";
+
+const INITIAL = "ـ";
+
 const ABZ_TO_ARB = [
   // S = start, M = 'middle', E = 'end'
-  { rule: "S", l: "aa", a: ["ا"] },
-  { rule: "M", l: "aa", a: ["ا"] },
-  { rule: "S", l: "a", a: ["ا"] },
-  { rule: "M", l: "a", a: ["\u064E", "ا"] }, // fat7a
-  { rule: "S", l: "2", a: ["ا"] },
-  { rule: "M", l: "2", a: ["ق", "أ"] },
-  { rule: "E", l: "2", a: ["ق"] },
-  { rule: "M", l: "22", a: ["قّ"] },
-  { rule: "A", l: "2", a: ["ا"] },
-  { rule: "A", l: "7", a: ["ح"] },
-  { rule: "A", l: "77", a: ["حّ"] },
-  { rule: "A", l: "3", a: ["ع"] },
-  { rule: "A", l: "33", a: ["عّ"] },
+  { rule: "S", l: "aa", a: [ALEF] },
+  { rule: "M", l: "aa", a: [ALEF] },
+  { rule: "S", l: "a", a: [ALEF_HAMZE, QAF] },
+  // { rule: "S", l: "a", a: [ALEF] },
+
+  { rule: "S", l: "A", a: [ALEF_HAMZE] },
+
+  { rule: "M", l: "a", a: [FAT7A, ALEF] },
+  { rule: "S", l: "2", a: [ALEF] },
+  { rule: "M", l: "2", a: [QAF, ALEF_HAMZE] },
+  { rule: "E", l: "2", a: [QAF] },
+  { rule: "M", l: "22", a: [`${QAF}${SHADDE}`] },
+  { rule: "S", l: "2", a: [ALEF] },
+  { rule: "M", l: "2", a: [ALEF] },
+
+  { rule: "A", l: "7", a: [H7A2] },
+  { rule: "A", l: "77", a: [`${H7A2}${SHADDE}`] },
+  { rule: "A", l: "3", a: [AAYN] },
+
+  { rule: "E", l: " 3", a: [` ${AAYN}${INITIAL}`] },
+  { rule: "E", l: " 3a", a: [` ${AAYN}${FAT7A}${INITIAL}`] },
+
+  { rule: "E", l: " t", a: [` ${TAA2}${INITIAL}`] },
+  { rule: "E", l: " ta", a: [` ${TAA2}${FAT7A}${INITIAL}`] },
+
+  { rule: "E", l: " b", a: [` ${BAA2}${INITIAL}`] },
+  { rule: "E", l: " bi", a: [` ${BAA2}${KASRA}${INITIAL}`] },
+
+  { rule: "E", l: " l", a: [` ${LAAM}${INITIAL}`] },
+  { rule: "E", l: " la", a: [` ${LAAM}${FAT7A}${INITIAL}`] },
+
+  { rule: "E", l: " 7", a: [` ${H7A2}${INITIAL}`] },
+  { rule: "E", l: " 7a", a: [` ${H7A2}${FAT7A}${INITIAL}`] },
+
+  { rule: "A", l: "33", a: [`${GHAYN}${SHADDE}`] },
   { rule: "A", l: " ", a: [" "] },
-  { rule: "A", l: "kh", a: ["خ"] },
-  { rule: "A", l: "aa", a: ["ا"] },
-  { rule: "A", l: "b", a: ["ب"] },
-  { rule: "A", l: "bb", a: ["بّ"] },
-  { rule: "A", l: "c", a: ["س"] },
-  { rule: "A", l: "d", a: ["د", "ض"] },
-  { rule: "A", l: "D", a: ["ض"] },
-  { rule: "A", l: "dd", a: ["دّ", "ضّ"] },
-  { rule: "M", l: "e", a: ["\u0650", "ا"] }, // kasra
-  { rule: "E", l: "e", a: ["\u0650", "ي"] }, //kasra ي
-  { rule: "A", l: "ee", a: ["ي"] }, //kasra ي
-  { rule: "S", l: "e", a: ["ا", "ق"] },
-  { rule: "A", l: " e", a: [" ا"] },
-  { rule: "A", l: "f", a: ["ف"] },
-  { rule: "A", l: "g", a: ["ج"] },
-  { rule: "A", l: "gh", a: ["غ"] },
-  { rule: "A", l: "h", a: ["ه"] },
-  { rule: "M", l: "i", a: ["\u0650", "ي"] }, // kasra
-  { rule: "E", l: "i", a: ["\u0650", "ي"] }, //kasra
-  { rule: "A", l: "j", a: ["ج"] },
-  { rule: "A", l: "k", a: ["ك", "ق"] },
-  { rule: "A", l: "kk", a: ["كّ"] },
-  { rule: "A", l: "l", a: ["ل"] },
-  { rule: "A", l: "ll", a: ["لّ"] },
-  { rule: "A", l: "m", a: ["م"] },
-  { rule: "A", l: "mm", a: ["مّ"] },
-  { rule: "A", l: "mmu", a: ["مُّ"] },
-  { rule: "A", l: "n", a: ["\u0646"] },
-  { rule: "A", l: "nn", a: ["نّ"] },
-  { rule: "M", l: "o", a: ["\u064F", "و"] },
-  { rule: "E", l: "o", a: ["\u064F", "و"] },
+  { rule: "A", l: "kh", a: [KHA2] },
+  { rule: "A", l: "5", a: [KHA2] },
+  { rule: "A", l: "55", a: [`${KHA2}${SHADDE}`] },
+  { rule: "A", l: "aa", a: [ALEF] },
+  { rule: "A", l: "b", a: [BAA2] },
+  { rule: "A", l: "bb", a: [`${BAA2}${SHADDE}`] },
+  { rule: "A", l: "c", a: [SEEN] },
+  { rule: "A", l: "d", a: [DAAL, DHAAD] },
+  { rule: "A", l: "D", a: [DHAAD] },
+  { rule: "A", l: "dd", a: [`${DAAL}${SHADDE}`, `${DHAAD}${SHADDE}`] },
+  { rule: "E", l: "e", a: [`${KASRA}${TA2_MARBOUTA}`, YAA2] },
 
-  { rule: "M", l: "o", a: ["و"] },
-  { rule: "E", l: "o", a: ["و"] },
+  { rule: "M", l: "e", a: [KASRA, `${KASRA}${ALEF}`] },
+  { rule: "A", l: "ee", a: [YAA2, `${ALEF}${KASRA}`] },
+
+  // { rule: "A", l: "ee", a: [YAA2] },
+
+  { rule: "S", l: "e", a: [HAMZE_SEAT, QAF] },
+  { rule: "A", l: " e", a: [` ${ALEF}`] },
+  { rule: "A", l: "f", a: [FAA2] },
+  { rule: "A", l: "g", a: [JIIM] },
+  { rule: "A", l: "gg", a: [`${JIIM}${SHADDE}`] },
+
+  { rule: "A", l: "gh", a: [GHAYN] },
+  { rule: "A", l: "h", a: [HAA2] },
+  { rule: "A", l: "ii", a: [YAA2] },
+
+  { rule: "M", l: "i", a: [KASRA, YAA2] },
+  { rule: "E", l: "i", a: [YAA2] },
+  { rule: "S", l: "i", a: [HAMZE_SEAT] },
+
+  { rule: "A", l: "j", a: [JIIM] },
+  { rule: "A", l: "k", a: [KAAF, QAF] },
+  { rule: "A", l: "kk", a: [`${KAAF}${SHADDE}`] },
+  { rule: "A", l: "l", a: [LAAM] },
+  { rule: "A", l: "ll", a: [`${LAAM}${SHADDE}`] },
+  { rule: "A", l: "m", a: [MIIM] },
+  { rule: "A", l: "M", a: [MIIM] },
+
+  { rule: "A", l: "mm", a: [`${MIIM}${SHADDE}`] },
+  { rule: "A", l: "mmu", a: [`${MIIM}${MIIM}${DAMME}`] },
+  { rule: "A", l: "n", a: [NOON] },
+  { rule: "A", l: "nn", a: [`${NOON}${SHADDE}`] },
+  { rule: "M", l: "o", a: [DAMME, WAAW] },
+  { rule: "E", l: "o", a: [DAMME, WAAW] },
+
+  { rule: "M", l: "o", a: [WAAW] },
+  { rule: "E", l: "o", a: [WAAW] },
   { rule: "S", l: "o", a: ["اُ"] },
-  { rule: "A", l: "p", a: ["ب"] },
-  { rule: "A", l: "pp", a: ["بّ"] },
-  { rule: "A", l: "q", a: ["ق"] },
-  { rule: "A", l: "r", a: ["ر"] },
-  { rule: "A", l: "rr", a: ["رّ"] },
-  { rule: "A", l: "s", a: ["س", "ص"] },
-  { rule: "A", l: "ss", a: ["سّ", "صّ"] },
-  { rule: "A", l: "t", a: ["ت", "ط"] },
-  { rule: "A", l: "T", a: ["ط"] },
-  { rule: "A", l: "tt", a: ["تّ", "ط"] },
-  { rule: "A", l: "v", a: ["ف"] },
-  { rule: "A", l: "u", a: ["\u064F", "و"] },
-  { rule: "A", l: "uu", a: ["و"] },
-  { rule: "A", l: "ou", a: ["و"] },
-  { rule: "A", l: "oo", a: ["و"] },
-  { rule: "A", l: "w", a: ["و"] },
-  { rule: "E", l: "u", a: ["و"] },
+  { rule: "A", l: "p", a: [PAA2] },
+  { rule: "A", l: "pp", a: [`${BAA2}${SHADDE}`] },
+  { rule: "A", l: "q", a: [QAF] },
+  { rule: "A", l: "r", a: [RAA2] },
+  { rule: "A", l: "rr", a: [`${RAA2}${SHADDE}`] },
+  { rule: "A", l: "s", a: [SEEN, SAAD] },
+  { rule: "A", l: "S", a: [SAAD] },
 
-  { rule: "A", l: "ww", a: ["وّ"] },
-  { rule: "A", l: "x", a: ["كس"] },
-  { rule: "A", l: "y", a: ["ي"] },
-  { rule: "A", l: "yy", a: ["يّ"] },
-  { rule: "A", l: "z", a: ["ز", "ظ", "ذ"] },
-  { rule: "A", l: "Z", a: ["ظ"] },
-  { rule: "A", l: "sh", a: ["ش"] },
-  // { rule: "A", l: "s", a: ["س"] },
-  // { rule: "A", l: "s", a: ["س"] },
-  // { rule: "E", l: "a", a: ["ا", "ة", "ى", ""] },
-  { rule: "E", l: "aa", a: ["ى"] }, // ا
-  // { rule: "A", l: "aa ", a: ["ى", "ا "] }, // ا
-  { rule: "E", l: "a", a: ["ة", "ى", "ا"] }, // ا
-  { rule: "E", l: "e", a: ["ة"] },
+  { rule: "A", l: "ss", a: [`${SEEN}${SHADDE}`, `${SAAD}${SHADDE}`] },
+  { rule: "A", l: "t", a: [TAA2, THAA] },
+  { rule: "A", l: "T", a: [THAA] },
+  { rule: "A", l: "TT", a: [`${THAA}${SHADDE}`] },
 
-  // { rule: "A", l: "a ", a: ["ا", "ة", "ى ", ""] },
+  { rule: "A", l: "tt", a: [`${TAA2}${SHADDE}`, THAA] },
+  { rule: "A", l: "v", a: [FAA2] },
+  { rule: "A", l: "u", a: [WAAW, DAMME] },
+  { rule: "A", l: "uu", a: [`${DAMME}${WAAW}`] },
+  { rule: "A", l: "ou", a: [WAAW] },
+  { rule: "A", l: "oo", a: [WAAW] },
+  { rule: "A", l: "w", a: [WAAW] },
+  { rule: "E", l: "u", a: [WAAW] },
+
+  { rule: "A", l: "ww", a: [`${WAAW}${SHADDE}`] },
+  { rule: "A", l: "x", a: [`${KAAF}${SEEN}`] },
+  { rule: "A", l: "y", a: [YAA2] },
+  { rule: "A", l: "yy", a: [`${YAA2}${SHADDE}`] },
+  { rule: "A", l: "z", a: [ZAY, ZHAA2, ZHAAL] },
+  { rule: "A", l: "Z", a: [ZHAA2] },
+  { rule: "A", l: "sh", a: [SHEEN] },
+  { rule: "A", l: `${SHEEN}${SHEEN}`, a: [`${SHEEN}${SHADDE}`] },
+
+  { rule: "A", l: "sh", a: [`${SEEN}${HAA2}`] },
+
+  { rule: "A", l: "ch", a: [SHEEN] },
+
+  { rule: "E", l: "aa", a: [ALEF_MAKSOURA] }, // ا
+  // { rule: "A", l: "aa ", a: [ALEF_MAKSOURA, "ا "] }, // ا
+  { rule: "E", l: "a", a: [TA2_MARBOUTA, ALEF_MAKSOURA, ALEF] }, // ا
+
+  // { rule: "A", l: "a ", a: [ALEF, TA2_MARBOUTA, "ى ", ""] },
 ];
 
 const TO_PRON_RULES = [
@@ -126,18 +212,18 @@ const TO_PRON_RULES = [
   { rule: "A", l: "j", a: ["ǧ"] },
   { rule: "A", l: "g", a: ["ǧ"] },
 
-  { rule: "A", l: "ج", a: ["ǧ"] },
+  { rule: "A", l: JIIM, a: ["ǧ"] },
   { rule: "A", l: "7", a: ["ḥ"] },
-  { rule: "A", l: "ح", a: ["ḥ"] },
+  { rule: "A", l: H7A2, a: ["ḥ"] },
 
   { rule: "A", l: "kh", a: ["ẖ", "kh"] },
   { rule: "A", l: "KH", a: ["ẖ"] },
   { rule: "A", l: "5", a: ["ẖ"] },
-  { rule: "A", l: "خ", a: ["ẖ"] },
+  { rule: "A", l: KHA2, a: ["ẖ"] },
 
   { rule: "A", l: "d", a: ["d"] },
   { rule: "A", l: "z", a: ["ḏ"] },
-  { rule: "A", l: "ذ", a: ["ḏ"] },
+  { rule: "A", l: ZHAAL, a: ["ḏ"] },
 
   { rule: "A", l: "r", a: ["r"] },
   { rule: "A", l: "z", a: ["z"] },
@@ -146,17 +232,17 @@ const TO_PRON_RULES = [
 
   { rule: "A", l: "s", a: ["ṣ"] },
   { rule: "A", l: "S", a: ["ṣ"] },
-  { rule: "A", l: "ص", a: ["ṣ"] },
+  { rule: "A", l: SAAD, a: ["ṣ"] },
 
   { rule: "A", l: "sh", a: ["š", "sh"] },
   { rule: "A", l: "SH", a: ["š"] },
-  { rule: "A", l: "ش", a: ["š"] },
+  { rule: "A", l: SHEEN, a: ["š"] },
 
   { rule: "A", l: "d", a: ["ḍ"] },
   { rule: "A", l: "D", a: ["ḏ"] },
   // { rule: "A", l: "t", a: ["ṭ"] },
   { rule: "A", l: "T", a: ["ṭ"] },
-  { rule: "A", l: "ط", a: ["ṭ"] },
+  { rule: "A", l: THAA, a: ["ṭ"] },
 
   { rule: "A", l: "z", a: ["ẓ"] },
   { rule: "A", l: "Z", a: ["ẓ"] },
@@ -189,127 +275,117 @@ const TO_PRON_RULES = [
   { rule: "A", l: "uu", a: ["ū"] },
   { rule: "A", l: "y", a: ["y"] },
 
-  // { rule: "A", l: "a ", a: ["ا", "ة", "ى ", ""] },
+  // { rule: "A", l: "a ", a: [ALEF, TA2_MARBOUTA, "ى ", ""] },
 ];
 
 const PRON_TO_ARB_RULES = [
   // S = staart, M = 'middle', E = 'end'
-  { rule: "A", l: "b", a: ["ب"] },
-  { rule: "A", l: "p", a: ["ب"] },
+  { rule: "A", l: "b", a: [BAA2] },
+  { rule: "A", l: "p", a: [BAA2] },
 
-  { rule: "A", l: "bb", a: ["بّ"] },
+  { rule: "A", l: "bb", a: [`${BAA2}${SHADDE}`] },
 
-  { rule: "A", l: "t", a: ["ت"] },
+  { rule: "A", l: "t", a: [TAA2] },
   { rule: "A", l: "tt", a: ["تّ"] },
 
   { rule: "A", l: "ṯ", a: ["ث"] },
   { rule: "A", l: "ṯṯ", a: ["ثّ"] },
 
-  { rule: "A", l: "ǧ", a: ["ج"] },
+  { rule: "A", l: "ǧ", a: [JIIM] },
   { rule: "A", l: "ǧǧ", a: ["جّ"] },
 
-  { rule: "A", l: "ḥ", a: ["ح"] },
+  { rule: "A", l: "ḥ", a: [H7A2] },
 
-  { rule: "A", l: "ẖ", a: ["خ"] },
+  { rule: "A", l: "ẖ", a: [KHA2] },
   { rule: "A", l: "ẖẖ", a: ["خّ"] },
 
-  { rule: "A", l: "d", a: ["د"] },
+  { rule: "A", l: "d", a: [DAAL] },
   { rule: "A", l: "dd", a: ["دّ"] },
 
-  { rule: "A", l: "ḏ", a: ["ذ"] },
+  { rule: "A", l: "ḏ", a: [ZHAAL] },
   { rule: "A", l: "ḏḏ", a: ["ذّ"] },
 
-  { rule: "A", l: "r", a: ["ر"] },
+  { rule: "A", l: "r", a: [RAA2] },
   { rule: "A", l: "rr", a: ["رّ"] },
 
-  { rule: "A", l: "z", a: ["ز"] },
+  { rule: "A", l: "z", a: [ZAY] },
   { rule: "A", l: "zz", a: ["زّ"] },
 
-  { rule: "A", l: "s", a: ["س"] },
+  { rule: "A", l: "s", a: [SEEN] },
   { rule: "A", l: "ss", a: ["سّ"] },
 
-  { rule: "A", l: "š", a: ["ش"] },
+  { rule: "A", l: "š", a: [SHEEN] },
   { rule: "A", l: "šš", a: ["شّ"] },
 
-  { rule: "A", l: "ṣ", a: ["ص"] },
+  { rule: "A", l: "ṣ", a: [SAAD] },
   { rule: "A", l: "ṣṣ", a: ["صّ"] },
 
-  { rule: "A", l: "ḍ", a: ["ض"] },
+  { rule: "A", l: "ḍ", a: [DHAAD] },
   { rule: "A", l: "ḍḍ", a: ["ضّ"] },
 
-  { rule: "A", l: "ṭ", a: ["ط"] },
+  { rule: "A", l: "ṭ", a: [THAA] },
   { rule: "A", l: "ṭṭ", a: ["طّ"] },
 
   { rule: "A", l: "ẓ", a: ["ظ"] },
   { rule: "A", l: "ẓẓ", a: ["ظّ"] },
 
-  { rule: "A", l: "ʕ", a: ["ع"] },
+  { rule: "A", l: "ʕ", a: [AAYN] },
   { rule: "A", l: "ʕʕ", a: ["عّ"] },
 
-  // { rule: "A", l: "ġ", a: ["ع"] },
-  { rule: "A", l: "ġ", a: ["غ"] },
+  // { rule: "A", l: "ġ", a: [AAYN] },
+  { rule: "A", l: "ġ", a: [GHAYN] },
   { rule: "A", l: "ġġ", a: ["غّ"] },
 
-  { rule: "A", l: "f", a: ["ف"] },
+  { rule: "A", l: "f", a: [FAA2] },
   { rule: "A", l: "ff", a: ["فّ"] },
 
-  { rule: "A", l: "q", a: ["ق"] },
+  { rule: "A", l: "q", a: [QAF] },
   { rule: "A", l: "qq", a: ["قّ"] },
 
-  { rule: "A", l: "k", a: ["ك"] },
-  { rule: "A", l: "kk", a: ["كّ"] },
+  { rule: "A", l: "k", a: [KAAF] },
+  { rule: "A", l: "kk", a: [`${KAAF}${SHADDE}`] },
 
-  { rule: "A", l: "l", a: ["ل"] },
-  { rule: "A", l: "ll", a: ["لّ"] },
+  { rule: "A", l: "l", a: [LAAM] },
+  { rule: "A", l: "ll", a: [`${LAAM}${SHADDE}`] },
 
-  { rule: "A", l: "m", a: ["م"] },
-  { rule: "A", l: "mm", a: ["مّ"] },
+  { rule: "A", l: "m", a: [MIIM] },
+  { rule: "A", l: "mm", a: [`${MIIM}${SHADDE}`] },
 
-  { rule: "A", l: "n", a: ["ن"] },
-  { rule: "A", l: "nn", a: ["نّ"] },
+  { rule: "A", l: "n", a: [NOON] },
+  { rule: "A", l: "nn", a: [`${NOON}${SHADDE}`] },
 
-  { rule: "A", l: "h", a: ["ه"] },
-  { rule: "A", l: "hh", a: ["هّ"] },
+  { rule: "A", l: "h", a: [HAA2] },
+  { rule: "A", l: "hh", a: [`${HAA2}${SHADDE}`] },
 
-  { rule: "A", l: "w", a: ["و"] },
-  { rule: "A", l: "ww", a: ["وّ"] },
+  { rule: "A", l: "w", a: [WAAW] },
+  { rule: "A", l: "ww", a: [`${WAAW}${SHADDE}`] },
 
-  { rule: "A", l: "y", a: ["ي"] },
-  { rule: "A", l: "yy", a: ["يّ"] },
+  { rule: "A", l: "y", a: [YAA2] },
+  { rule: "A", l: "yy", a: [`${YAA2}${SHADDE}`] },
 
-  // { rule: "A", l: "l", a: ["ل"] },
-  // { rule: "A", l: "l", a: ["ل"] },
-  // { rule: "A", l: "l", a: ["ل"] },
+  { rule: "M", l: "a", a: [FAT7A] },
+  { rule: "E", l: "a", a: [FAT7A] },
 
-  // { rule: "A", l: "a ", a: ["ا", "ة", "ى ", ""] },
+  { rule: "S", l: "e", a: [`${ALEF}${KASRA}`] },
+  { rule: "M", l: "e", a: [KASRA] },
+  // { rule: "E", l: "e", a: [KASRA] },
 
-  // { rule: "S", l: "a", a: ["\u064E"] }, // fat7a
-  { rule: "S", l: "a", a: ["ا"] }, // fat7a
-  { rule: "M", l: "a", a: ["\u064E"] }, // fat7a
-  { rule: "E", l: "a", a: ["\u064E"] }, // fat7a
+  // { rule: "A", l: "i", a: [KASRA] },
 
-  // { rule: "E", l: "a", a: ["ا"] }, // fat7a
-  // { rule: "E", l: "a ", a: ["ا "] }, // fat7a
-  { rule: "S", l: "e", a: ["ا\u0650"] }, // kasra
-  { rule: "M", l: "e", a: ["\u0650"] }, // kasra
-  { rule: "E", l: "e", a: ["\u0650"] }, // kasra
+  { rule: "S", l: "ə", a: [`${ALEF}${KASRA}`] },
+  { rule: "M", l: "ə", a: [KASRA] },
+  { rule: "E", l: "ə", a: [KASRA] },
 
-  { rule: "A", l: "i", a: ["\u0650"] },
+  { rule: "A", l: "o", a: [DAMME] },
+  { rule: "A", l: "u", a: [DAMME] },
 
-  { rule: "S", l: "ə", a: ["ا\u0650"] }, // kasra
-  { rule: "M", l: "ə", a: ["\u0650"] }, // kasra
-  { rule: "E", l: "ə", a: ["\u0650"] }, // kasra
+  { rule: "A", l: "ē", a: [`${KASRA}${ALEF}`] },
+  { rule: "A", l: "ā", a: [ALEF] },
+  { rule: "A", l: "ō", a: [WAAW] },
+  { rule: "A", l: "ū", a: [WAAW] },
+  { rule: "A", l: "ī", a: [YAA2] },
 
-  { rule: "A", l: "o", a: ["\u064F"] }, // damme
-  { rule: "A", l: "u", a: ["\u064F"] }, // damme
-
-  { rule: "A", l: "ē", a: ["\u0650ا"] },
-  { rule: "A", l: "ā", a: ["ا"] },
-  { rule: "A", l: "ō", a: ["و"] },
-  { rule: "A", l: "ū", a: ["و"] },
-  { rule: "A", l: "ī", a: ["ي"] },
-
-  { rule: "A", l: "ʔ", a: ["ء"] },
+  { rule: "A", l: "ʔ", a: [HAMZE_SATER] },
 ];
 
 function lToA(prev, prevPrev, current, cType, rules) {
@@ -387,10 +463,8 @@ function toTree(wordSrc, rules, limit) {
     }
   });
 
-  let ss = leaves
-    .map((l) => l.value)
-    .filter((l) => l.length > 0)
-    .sort((a, b) => a.length - b.length);
+  let ss = leaves.map((l) => l.value).filter((l) => l.length > 0);
+  // .sort((a, b) => a.length - b.length);
 
   return ss;
 }
