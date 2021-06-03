@@ -89,6 +89,8 @@ const ABZ_TO_ARB = [
   { rule: "M", l: "2", a: [ALEF] },
 
   { rule: "A", l: "7", a: [H7A2] },
+  { rule: "A", l: "*", a: [SHADDE] },
+
   { rule: "A", l: "77", a: [`${H7A2}${SHADDE}`] },
   { rule: "A", l: "3", a: [AAYN] },
 
