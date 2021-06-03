@@ -28,7 +28,9 @@ class TreeNode {
 const ALEF = "ا";
 const BAA2 = "ب";
 const PAA2 = "پ";
+const VAA2 = "ڤ";
 const TAA2 = "ت";
+const GAAL = "چ";
 const TA2_MARBOUTA = "ة";
 const THAA = "ط";
 const ALEF_HAMZE = "أ";
@@ -127,8 +129,9 @@ const ABZ_TO_ARB = [
   { rule: "S", l: "e", a: [HAMZE_SEAT, QAF] },
   { rule: "A", l: " e", a: [` ${ALEF}`] },
   { rule: "A", l: "f", a: [FAA2] },
-  { rule: "A", l: "g", a: [JIIM] },
-  { rule: "A", l: "gg", a: [`${JIIM}${SHADDE}`] },
+  { rule: "A", l: "g", a: [JIIM, GAAL] },
+
+  { rule: "A", l: "gg", a: [`${JIIM}${SHADDE}`, `${GAAL}${SHADDE}`] },
 
   { rule: "A", l: "gh", a: [GHAYN] },
   { rule: "A", l: "h", a: [HAA2] },
@@ -157,7 +160,7 @@ const ABZ_TO_ARB = [
   { rule: "E", l: "o", a: [WAAW] },
   { rule: "S", l: "o", a: ["اُ"] },
   { rule: "A", l: "p", a: [PAA2] },
-  { rule: "A", l: "pp", a: [`${BAA2}${SHADDE}`] },
+  { rule: "A", l: "pp", a: [`${PAA2}${SHADDE}`] },
   { rule: "A", l: "q", a: [QAF] },
   { rule: "A", l: "r", a: [RAA2] },
   { rule: "A", l: "rr", a: [`${RAA2}${SHADDE}`] },
@@ -170,7 +173,9 @@ const ABZ_TO_ARB = [
   { rule: "A", l: "TT", a: [`${THAA}${SHADDE}`] },
 
   { rule: "A", l: "tt", a: [`${TAA2}${SHADDE}`, THAA] },
-  { rule: "A", l: "v", a: [FAA2] },
+  { rule: "A", l: "v", a: [VAA2] },
+  { rule: "A", l: "vv", a: [`${VAA2}${SHADDE}`] },
+
   { rule: "A", l: "u", a: [WAAW, DAMME] },
   { rule: "A", l: "uu", a: [`${DAMME}${WAAW}`] },
   { rule: "A", l: "ou", a: [WAAW] },
@@ -210,7 +215,7 @@ const TO_PRON_RULES = [
   { rule: "A", l: "ث", a: ["ṯ"] },
 
   { rule: "A", l: "j", a: ["ǧ"] },
-  { rule: "A", l: "g", a: ["ǧ"] },
+  { rule: "A", l: "g", a: ["ǧ", "g"] },
 
   { rule: "A", l: JIIM, a: ["ǧ"] },
   { rule: "A", l: "7", a: ["ḥ"] },
@@ -274,14 +279,12 @@ const TO_PRON_RULES = [
 
   { rule: "A", l: "uu", a: ["ū"] },
   { rule: "A", l: "y", a: ["y"] },
-
-  // { rule: "A", l: "a ", a: [ALEF, TA2_MARBOUTA, "ى ", ""] },
 ];
 
 const PRON_TO_ARB_RULES = [
   // S = staart, M = 'middle', E = 'end'
   { rule: "A", l: "b", a: [BAA2] },
-  { rule: "A", l: "p", a: [BAA2] },
+  { rule: "A", l: "p", a: [PAA2] },
 
   { rule: "A", l: "bb", a: [`${BAA2}${SHADDE}`] },
 
@@ -290,6 +293,10 @@ const PRON_TO_ARB_RULES = [
 
   { rule: "A", l: "ṯ", a: ["ث"] },
   { rule: "A", l: "ṯṯ", a: ["ثّ"] },
+  { rule: "A", l: "g", a: [GAAL] },
+  { rule: "A", l: "gg", a: [`${GAAL}${SHADDE}`] },
+
+  { rule: "A", l: "v", a: [VAA2] },
 
   { rule: "A", l: "ǧ", a: [JIIM] },
   { rule: "A", l: "ǧǧ", a: ["جّ"] },
@@ -362,6 +369,8 @@ const PRON_TO_ARB_RULES = [
 
   { rule: "A", l: "y", a: [YAA2] },
   { rule: "A", l: "yy", a: [`${YAA2}${SHADDE}`] },
+
+  { rule: "S", l: "a", a: [`${ALEF}${FAT7A}`] },
 
   { rule: "M", l: "a", a: [FAT7A] },
   { rule: "E", l: "a", a: [FAT7A] },
