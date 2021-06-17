@@ -71,12 +71,13 @@ const KASRA = "\u0650";
 
 const INITIAL = "ـ";
 
+const TANWEEN_FAT7A = "اً";
+
 const ABZ_TO_ARB = [
   // S = start, M = 'middle', E = 'end'
   { rule: "S", l: "aa", a: [ALEF] },
   { rule: "M", l: "aa", a: [ALEF] },
   { rule: "S", l: "a", a: [ALEF_HAMZE, QAF] },
-  // { rule: "S", l: "a", a: [ALEF] },
 
   { rule: "S", l: "A", a: [ALEF_HAMZE] },
 
@@ -87,6 +88,8 @@ const ABZ_TO_ARB = [
   { rule: "M", l: "22", a: [`${QAF}${SHADDE}`] },
   { rule: "S", l: "2", a: [ALEF] },
   { rule: "M", l: "2", a: [ALEF] },
+
+  { rule: "E", l: "an", a: [`${TANWEEN_FAT7A}`, `${FAT7A}${NOON}`] },
 
   { rule: "A", l: "7", a: [H7A2] },
   { rule: "A", l: "*", a: [SHADDE] },
